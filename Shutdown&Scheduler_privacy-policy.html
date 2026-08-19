@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://gizlilik-politikasi-eta.vercel.app/ -->
+<html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizlilik Politikası — Auto Shutdown &amp; Scheduler | Idylle Soft</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2430;
+    --text-dim: #5a6270;
+    --border: #e4e7ec;
+    --accent: #3b5bdb;
+    --panel: #f7f8fa;
+    --ok: #1a7f4e;
+    --warn: #b45309;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  header { margin-bottom: 36px; border-bottom: 1px solid var(--border); padding-bottom: 28px; }
+  h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .meta { color: var(--text-dim); font-size: 14px; }
+  .meta strong { color: var(--text); }
+  nav.lang { margin-top: 18px; font-size: 14px; }
+  nav.lang a {
+    color: var(--accent); text-decoration: none; font-weight: 600;
+    border: 1px solid var(--border); padding: 6px 14px; border-radius: 999px;
+    margin-right: 8px; display: inline-block;
+  }
+  nav.lang a:hover { background: var(--panel); }
+  h2 {
+    font-size: 19px; margin: 40px 0 12px; padding-top: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  h3 { font-size: 15.5px; margin: 22px 0 8px; color: var(--text); }
+  p, li { font-size: 15px; color: var(--text); }
+  p.dim, li.dim { color: var(--text-dim); }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; margin: 14px 0;
+  }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .badge.local { background: #e6f4ea; color: var(--ok); }
+  .badge.optional { background: #fdf1e0; color: var(--warn); }
+  .badge.never { background: #fde8e8; color: #b42318; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-dim); font-weight: 600; width: 40%; }
+  code {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 5px;
+    padding: 1px 6px; font-size: 13px; font-family: Consolas, "SF Mono", monospace;
+  }
+  a { color: var(--accent); }
+  hr.section { border: none; border-top: 2px solid var(--border); margin: 56px 0 0; }
+  footer { margin-top: 40px; color: var(--text-dim); font-size: 13px; }
+  .toc { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 24px 0 8px; }
+  .toc p { margin: 0 0 8px; font-weight: 600; font-size: 13.5px; text-transform: uppercase; color: var(--text-dim); letter-spacing: .03em; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { font-size: 14px; margin-bottom: 4px; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Gizlilik Politikası</h1>
+  <div class="meta">
+    <strong>Uygulama:</strong> Auto Shutdown &amp; Scheduler &nbsp;·&nbsp;
+    <strong>Geliştirici:</strong> Idylle Soft &nbsp;·&nbsp;
+    <strong>Sürüm:</strong> 1.0.0 &nbsp;·&nbsp;
+    <strong>Son güncelleme:</strong> 4 Ağustos 2026
+  </div>
+  <nav class="lang">
+    <a href="https://gizlilik-politikasi-eta.vercel.app/#tr">Türkçe</a>
+    <a href="https://gizlilik-politikasi-eta.vercel.app/#en">English</a>
+  </nav>
+</header>
+
+<a id="tr"></a>
+
+<div class="toc">
+  <p>İçindekiler</p>
+  <ol>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-giris">Giriş</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-hesap">Hesap ve Kimlik Doğrulama</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-yerel">Yalnızca Cihazınızda Kalan Veriler</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-hata">Hata Raporlama (Telegram üzerinden)</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-geribildirim">Geri Bildirim (Telegram üzerinden)</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-satin-alma">Pro Satın Alma Bildirimleri (Telegram üzerinden)</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-ucuncu">Üçüncü Taraflarla Paylaşım</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-guvenlik">Veri Güvenliği</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-saklama">Veri Saklama ve Silme</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-haklar">Kontrolleriniz ve Haklarınız</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-cocuk">Çocukların Gizliliği</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-degisiklik">Bu Politikadaki Değişiklikler</a></li>
+    <li><a href="https://gizlilik-politikasi-eta.vercel.app/#tr-iletisim">İletişim</a></li>
+  </ol>
+</div>
+
+<h2 id="tr-giris">1. Giriş</h2>
+<p>Auto Shutdown &amp; Scheduler ("Uygulama"), Idylle Soft ("biz") tarafından geliştirilen bir Windows masaüstü uygulamasıdır. Uygulama; CPU, ağ, ses, hareketsizlik, pil ve disk kullanımı gibi sistem koşullarına göre bilgisayarınızı otomatik olarak kapatma, yeniden başlatma, uyku/hazırda bekletme, oturum kapatma veya kilitleme gibi işlemler gerçekleştirir.</p>
+<p>Bu politika, Uygulamayı kullanırken hangi verilerin işlendiğini, nereye gönderildiğini (varsa) ve bunu nasıl kontrol edebileceğinizi açıkça anlatır. Kaynak kodu herkese açıktır; burada anlatılanlar koddaki gerçek davranışa dayanır, pazarlama amaçlı genel ifadeler değildir.</p>
+
+<div class="card">
+  <span class="badge local">Özetle</span>
+  <p style="margin:0">Uygulama bir <strong>hesap</strong>, <strong>giriş</strong> veya <strong>bulut senkronizasyonu</strong> gerektirmez. Reklam göstermez, üçüncü taraf analitik/izleme SDK'sı içermez, verinizi satmaz veya pazarlama amacıyla paylaşmaz. Ayarlarınız ve günlük (log) dosyanız yalnızca kendi bilgisayarınızda tutulur. Yalnızca üç durumda — <em>hata raporlama</em> (varsayılan açık, kapatılabilir), <em>geri bildirim gönderme</em> (yalnızca siz "Gönder"e basarsanız) ve <em>Pro satın alma akışını başlatma</em> — sınırlı teknik bilgi geliştiricinin Telegram sohbetine gönderilir. Aşağıda tam olarak ne gittiği/gitmediği satır satır açıklanmıştır.</p>
+</div>
+
+<h2 id="tr-hesap">2. Hesap ve Kimlik Doğrulama</h2>
+<p>Uygulama herhangi bir kullanıcı hesabı, e-posta doğrulaması veya bulut oturumu oluşturmaz. Sizi tanımlayan bir kullanıcı kimliği, cihaz kimliği veya reklam kimliği üretilmez ya da saklanmaz.</p>
+
+<h2 id="tr-yerel">3. Yalnızca Cihazınızda Kalan Veriler</h2>
+<p>Aşağıdaki veriler yalnızca kendi bilgisayarınızda tutulur; hiçbir koşulda İnternet üzerinden gönderilmez:</p>
+<table>
+  <tbody><tr><th>Veri</th><td><strong>Ayarlarınız</strong> (işlem türü, eşik değerleri, tema, dil tercihi vb.)</td></tr>
+  <tr><th>Konum</th><td><code>%LOCALAPPDATA%\OtomatikKapatici\ayarlar.json</code></td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Veri</th><td><strong>Günlük (log) dosyası</strong> — Uygulamanın çalışma kaydı, teşhis amaçlı</td></tr>
+  <tr><th>Konum</th><td><code>%LOCALAPPDATA%\OtomatikKapatici\log.txt</code> (boyutu sınırlıdır, otomatik döndürülür)</td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Veri</th><td><strong>Parola koruması</strong> (belirlediyseniz)</td></tr>
+  <tr><th>Konum</th><td>Yalnızca <strong>bellekte (RAM)</strong> — diske hiçbir zaman yazılmaz; Uygulama her kapatıldığında unutulur</td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Veri</th><td><strong>Windows ile başlatma tercihi</strong> ("Start with Windows" açıksa)</td></tr>
+  <tr><th>Konum</th><td>MSIX/Store sürümünde Windows'un görev zamanlayıcı altyapısı (StartupTask); Store dışı dağıtımlarda <code>HKEY_CURRENT_USER\Software\...</code> altında bir Kayıt Defteri (Registry) anahtarı</td></tr>
+</tbody></table>
+
+<h2 id="tr-hata">4. Hata Raporlama (Telegram üzerinden)</h2>
+<div class="card">
+  <span class="badge optional">Varsayılan: AÇIK — dilediğiniz zaman kapatabilirsiniz (opt-out)</span>
+  <p style="margin:0">Arka planda beklenmedik bir hata oluşursa (örn. bir izleme döngüsü öngörülmeyen bir sebeple çökerse), teşhis amaçlı bir rapor geliştiricinin Telegram sohbetine gönderilir. Yalnızca gerçekten beklenmedik/kritik hatalar gönderilir; kendiliğinden kurtarılan geçici hatalar yalnızca yerel günlükte kalır.</p>
+</div>
+<h3>Gönderilenler</h3>
+<ul>
+  <li>Hangi bileşenin hata verdiği ve tam hata mesajı/traceback (dosya yolları, yalnızca dosya adına indirgenmiş hâlde — tam yol asla gönderilmez)</li>
+  <li>Uygulama sürümü, işletim sistemi ve sürümü, Python sürümü, işlemci mimarisi/çekirdek sayısı, toplam/kullanılabilir RAM, anlık CPU kullanımı</li>
+</ul>
+<h3>Kesinlikle gönderilmeyenler</h3>
+<ul class="dim">
+  <li>Kullanıcı adınız, bilgisayar adınız</li>
+  <li>Dosya yollarınız (tam yol olarak)</li>
+  <li>IP adresiniz (Uygulama tarafından toplanmaz — bkz. madde 6)</li>
+  <li>Kişisel dosyalarınız veya izlediğiniz program/dosya adları</li>
+</ul>
+<h3>Nasıl kapatılır</h3>
+<p>Sağ üstteki dişli (⚙️) simgesinden <em>"Send anonymous error reports"</em> seçeneğini kapatabilirsiniz. Tercihiniz kalıcı olarak yerel ayarlarınızda saklanır.</p>
+
+<h2 id="tr-geribildirim">5. Geri Bildirim (Telegram üzerinden)</h2>
+<div class="card">
+  <span class="badge optional">Yalnızca siz "Gönder"e bastığınızda gider (kendiliğinden opt-in)</span>
+  <p style="margin:0">"Hakkında ve Geri Bildirim" penceresinden bir öneri/hata/diğer mesajı gönderirseniz, bu <strong>hata raporlama ayarından bağımsız</strong> çalışan ayrı bir mekanizmadır — o ayarı kapatmış olsanız bile, Geri Bildirim panelinden gönderdiğiniz mesaj yine iletilir. Bunu önlemenin tek yolu, panelden mesaj göndermemektir.</p>
+</div>
+<h3>Gönderilenler</h3>
+<ul>
+  <li>Yazdığınız metin ve seçtiğiniz kategori (Öneri / Hata bildirimi / Diğer)</li>
+  <li>Uygulama sürümü, arayüz dili</li>
+  <li>Hata raporlamadakiyle aynı, kişisel veri içermeyen sistem bilgisi (işletim sistemi, mimari, çekirdek sayısı, RAM, anlık CPU kullanımı)</li>
+</ul>
+<p class="dim">Kesinlikle gönderilmeyenler madde 4'tekiyle aynıdır: kullanıcı adı, bilgisayar adı, dosya yolları, IP adresi.</p>
+<p><strong>Not:</strong> Geri bildirim metnine kendi isteğinizle kişisel bilgi (ör. e-posta adresinizi) yazarsanız, elbette bu, yazdığınız metnin bir parçası olarak iletilir — Uygulama bunu talep etmez veya zorunlu kılmaz.</p>
+
+<h3 id="tr-satin-alma">5.1. Pro Satın Alma Bildirimleri (Telegram üzerinden)</h3>
+<div class="card">
+  <span class="badge optional">Yalnızca siz Pro satın alma akışını başlattığınızda gönderilir</span>
+  <p style="margin:0">Pro satın alma düğmesine bastığınızda, Windows'un Microsoft Store satın alma penceresinin başlatıldığına ilişkin bir teknik bildirim geliştiricinin Telegram sohbetine gönderilir. Satın alma akışı tamamlandığında ayrıca sonucun başarılı, tamamlanmamış/iptal edilmiş veya başlatılamamış olduğu bildirilir.</p>
+</div>
+<h3>Gönderilenler</h3>
+<ul>
+  <li>Satın alma penceresinin başlatıldığı bilgisi ve satın alma akışının sonucu</li>
+  <li>Uygulama sürümü, zaman damgası ve varsa Microsoft Store sonuç kodu</li>
+</ul>
+<h3>Kesinlikle gönderilmeyenler</h3>
+<ul class="dim">
+  <li>Ödeme veya kart bilgileri</li>
+  <li>Microsoft hesabı bilgileri</li>
+  <li>Kullanıcı adı, bilgisayar adı, dosya yolu veya kişisel dosyalar</li>
+</ul>
+<p>Ödeme işlemi yalnızca Microsoft Store tarafından yürütülür. Uygulama ödeme bilgilerinize erişmez veya bunları saklamaz.</p>
+
+<h2 id="tr-ucuncu">6. Üçüncü Taraflarla Paylaşım</h2>
+<p>Madde 4, 5 ve 5.1'de açıklanan veriler, yalnızca <strong>iletim kanalı</strong> olarak Telegram Bot API'si (<code>api.telegram.org</code>) üzerinden, HTTPS ile şifrelenmiş şekilde, geliştiricinin kendi özel Telegram sohbetine gönderilir. Üçüncü bir analitik şirketi, reklam ağı ya da veri komisyoncusuyla paylaşım yapılmaz, veri satılmaz.</p>
+<p class="dim">İnternet üzerinden yapılan her bağlantıda olduğu gibi, iletim sırasında Telegram'ın altyapısı standart ağ bilgisi (ör. IP adresiniz) olarak sizi görebilir — bu, Uygulamanın kendisinin topladığı veya sakladığı bir veri değildir, Telegram'ın kendi <a href="https://telegram.org/privacy" target="_blank" rel="noopener">gizlilik politikasına</a> tabidir.</p>
+<p>Uygulama, mailto: veya http(s):// bağlantılarını (ör. geliştirici iletişim/sosyal medya bağlantıları) yalnızca <strong>siz tıkladığınızda</strong> varsayılan tarayıcınızda/posta istemcinizde açar; bu sırada otomatik olarak veri iletilmez.</p>
+
+<h2 id="tr-guvenlik">7. Veri Güvenliği</h2>
+<ul>
+  <li>Telegram'a yapılan tüm iletim HTTPS ile şifrelenir.</li>
+  <li>Hata/traceback raporlarındaki dosya yolları, gönderilmeden önce otomatik olarak yalnızca dosya adına indirgenir (tam yol, kullanıcı adınızı içerebileceği için gönderilmez).</li>
+  <li>Parolanız hiçbir zaman diske yazılmaz, yalnızca bellekte tutulur.</li>
+  <li>Geliştiriciye ait Telegram bot token'ı/sohbet kimliği kaynak koda gömülü değildir; yalnızca geliştiricinin kendi derleme ortamında tutulur.</li>
+</ul>
+
+<h2 id="tr-saklama">8. Veri Saklama ve Silme</h2>
+<ul>
+  <li><strong>Yerel dosyalar</strong> (ayarlar, log): siz silene veya Uygulamayı kaldırana kadar cihazınızda kalır. Log dosyası boyut sınırına ulaştığında otomatik olarak döndürülür (eski kayıtlar silinir).</li>
+  <li><strong>Telegram'a gönderilen mesajlar</strong> (hata raporları, geri bildirimler ve Pro satın alma bildirimleri): geliştiricinin Telegram sohbetinde, geliştirici silene kadar saklanır. Belirli bir mesajın silinmesini istiyorsanız aşağıdaki iletişim bilgilerinden ulaşabilirsiniz.</li>
+</ul>
+
+<h2 id="tr-haklar">9. Kontrolleriniz ve Haklarınız</h2>
+<ul>
+  <li>Hata raporlamayı dişli menüsünden dilediğiniz an kapatabilirsiniz.</li>
+  <li>Geri Bildirim panelinden mesaj göndermemeyi seçebilirsiniz.</li>
+  <li>Pro satın alma bildirimi, yalnızca Pro satın alma akışını başlatmanız sırasında oluşur.</li>
+  <li><code>%LOCALAPPDATA%\OtomatikKapatici\</code> klasörünü silerek yerel ayar ve günlük dosyalarınızı tamamen kaldırabilirsiniz.</li>
+  <li>Uygulamayı kaldırdığınızda (Store üzerinden veya Denetim Masasından) yerel veri dosyaları ve varsa Kayıt Defteri anahtarı da kaldırılır.</li>
+  <li>Geliştiriciye gönderdiğiniz bir hata raporu/geri bildirim mesajının silinmesini talep etmek için madde 12'deki iletişim bilgilerini kullanabilirsiniz.</li>
+</ul>
+
+<h2 id="tr-cocuk">10. Çocukların Gizliliği</h2>
+<p>Uygulama, çocuklara yönelik olarak tasarlanmamıştır ve bilerek 13 yaşından küçük çocuklardan veri toplamaz. Yukarıda açıklandığı gibi Uygulama zaten kişisel veri toplamadığı için bu konuda ek bir risk bulunmamaktadır.</p>
+
+<h2 id="tr-degisiklik">11. Bu Politikadaki Değişiklikler</h2>
+<p>Bu politika güncellenebilir. Önemli değişiklikler olduğunda, sayfanın en üstündeki "Son güncelleme" tarihi güncellenecektir. Uygulamayı kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p>
+
+<h2 id="tr-iletisim">12. İletişim</h2>
+<p>Bu politika veya veri uygulamaları hakkında sorularınız için:</p>
+<ul>
+  <li>E-posta: <a href="mailto:idyllesoft@outlook.com">idyllesoft@outlook.com</a></li>
+  <li>Telegram: <a href="https://t.me/methimi" target="_blank" rel="noopener">@methimi</a></li>
+</ul>
+
+<hr class="section">
+
+<a id="en"></a>
+<h1 style="margin-top:40px;">Privacy Policy</h1>
+<div class="meta">
+  <strong>App:</strong> Auto Shutdown &amp; Scheduler &nbsp;·&nbsp;
+  <strong>Developer:</strong> Idylle Soft &nbsp;·&nbsp;
+  <strong>Version:</strong> 1.0.0 &nbsp;·&nbsp;
+  <strong>Last updated:</strong> August 4, 2026
+</div>
+<nav class="lang" style="margin-top:12px;">
+  <a href="https://gizlilik-politikasi-eta.vercel.app/#tr">Türkçe</a>
+  <a href="https://gizlilik-politikasi-eta.vercel.app/#en">English</a>
+</nav>
+
+<h2>1. Introduction</h2>
+<p>Auto Shutdown &amp; Scheduler (the "App") is a Windows desktop application developed by Idylle Soft ("we"). It automatically shuts down, restarts, sleeps/hibernates, logs off, or locks your computer based on system conditions such as CPU, network, audio, idle time, battery, and disk usage.</p>
+<p>This policy describes what data the App processes, where it is sent (if anywhere), and how you can control it. This description reflects the actual behavior in the (publicly available) source code, not generic marketing language.</p>
+
+<div class="card">
+  <span class="badge local">In short</span>
+  <p style="margin:0">The App requires no account, sign-in, or cloud sync. It shows no ads, includes no third-party analytics/tracking SDKs, and does not sell or share your data for marketing. Your settings and log file are stored only on your own computer. Only three features — <em>error reporting</em> (on by default, can be turned off), <em>feedback submission</em> (only when you press "Send"), and <em>starting the Pro purchase flow</em> — send limited technical information to the developer's Telegram chat. What exactly is and isn't sent is detailed below.</p>
+</div>
+
+<h2>2. Accounts and Authentication</h2>
+<p>The App does not create any user account, email verification, or cloud session. No user ID, device ID, or advertising ID is generated or stored.</p>
+
+<h2>3. Data That Stays On Your Device Only</h2>
+<table>
+  <tbody><tr><th>Data</th><td><strong>Your settings</strong> (action type, thresholds, theme, language preference, etc.)</td></tr>
+  <tr><th>Location</th><td><code>%LOCALAPPDATA%\OtomatikKapatici\ayarlar.json</code></td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Data</th><td><strong>Log file</strong> — the App's runtime log, for diagnostics</td></tr>
+  <tr><th>Location</th><td><code>%LOCALAPPDATA%\OtomatikKapatici\log.txt</code> (size-capped, auto-rotated)</td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Data</th><td><strong>Password protection</strong> (if you set one)</td></tr>
+  <tr><th>Location</th><td><strong>Memory (RAM) only</strong> — never written to disk; forgotten every time the App closes</td></tr>
+</tbody></table>
+<table>
+  <tbody><tr><th>Data</th><td><strong>"Start with Windows" preference</strong> (if enabled)</td></tr>
+  <tr><th>Location</th><td>Windows' StartupTask mechanism in the MSIX/Store build; a Registry key under <code>HKEY_CURRENT_USER\Software\...</code> in non-Store builds</td></tr>
+</tbody></table>
+
+<h2>4. Error Reporting (via Telegram)</h2>
+<div class="card">
+  <span class="badge optional">Default: ON — can be turned off at any time (opt-out)</span>
+  <p style="margin:0">If an unexpected background error occurs (e.g. a monitoring loop crashes unexpectedly), a diagnostic report is sent to the developer's Telegram chat. Only genuinely unexpected/critical errors are sent; self-recovering transient errors stay in the local log only.</p>
+</div>
+<h3>What is sent</h3>
+<ul>
+  <li>Which component failed, the error message and full traceback (file paths are reduced to file names only — full paths are never sent)</li>
+  <li>App version, OS and version, Python version, CPU architecture/core count, total/available RAM, instantaneous CPU usage</li>
+</ul>
+<h3>What is never sent</h3>
+<ul class="dim">
+  <li>Your username or computer name</li>
+  <li>Full file paths</li>
+  <li>Your IP address (not collected by the App itself — see section 6)</li>
+  <li>Your personal files, or the names of programs/files you monitor</li>
+</ul>
+<h3>How to disable</h3>
+<p>Click the gear (⚙️) icon and turn off <em>"Send anonymous error reports"</em>. Your choice is stored persistently in your local settings.</p>
+
+<h2>5. Feedback (via Telegram)</h2>
+<div class="card">
+  <span class="badge optional">Only sent when you press "Send" (self-contained opt-in)</span>
+  <p style="margin:0">If you submit a suggestion/bug report/other message from the "About &amp; Feedback" window, this is a separate mechanism, <strong>independent of the error-reporting setting</strong> — even if that setting is off, a message you send from the Feedback panel is still delivered. The only way to avoid this is not to submit a message.</p>
+</div>
+<h3>What is sent</h3>
+<ul>
+  <li>The text you write and the category you choose (Suggestion / Bug report / Other)</li>
+  <li>App version, interface language</li>
+  <li>The same non-personal system information as error reporting (OS, architecture, core count, RAM, instantaneous CPU usage)</li>
+</ul>
+<p class="dim">What is never sent is the same as section 4: username, computer name, file paths, IP address.</p>
+<p><strong>Note:</strong> If you voluntarily include personal information (e.g. your email address) in your feedback text, that is naturally transmitted as part of the message you wrote — the App does not request or require this.</p>
+
+<h3 id="en-purchase">5.1. Pro Purchase Notifications (via Telegram)</h3>
+<div class="card">
+  <span class="badge optional">Sent only when you start the Pro purchase flow</span>
+  <p style="margin:0">When you select the Pro purchase button, a technical notification that the Microsoft Store purchase window was started is sent to the developer's Telegram chat. When the purchase flow completes, a separate notification reports whether it succeeded, was not completed/cancelled, or could not be started.</p>
+</div>
+<h3>What is sent</h3>
+<ul>
+  <li>That the purchase window was started and the outcome of the purchase flow</li>
+  <li>App version, timestamp, and the Microsoft Store result code when available</li>
+</ul>
+<h3>What is never sent</h3>
+<ul class="dim">
+  <li>Payment or card details</li>
+  <li>Microsoft account information</li>
+  <li>Your username, computer name, file paths, or personal files</li>
+</ul>
+<p>Payments are handled exclusively by Microsoft Store. The App does not access or retain payment information.</p>
+
+<h2>6. Sharing With Third Parties</h2>
+<p>The data described in sections 4, 5, and 5.1 is sent, solely as a transport channel, via the Telegram Bot API (<code>api.telegram.org</code>) over HTTPS, to the developer's own private Telegram chat. No data is shared with third-party analytics companies, ad networks, or data brokers, and no data is sold.</p>
+<p class="dim">As with any internet connection, Telegram's infrastructure will incidentally see standard network information (such as your IP address) while relaying the message — this is not data collected or retained by the App itself, and is subject to <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Telegram's own privacy policy</a>.</p>
+<p>The App opens mailto: or http(s):// links (e.g. developer contact/social links) in your default browser/mail client only when <strong>you click them</strong>; no data is transmitted automatically in doing so.</p>
+
+<h2>7. Data Security</h2>
+<ul>
+  <li>All transmission to Telegram is encrypted via HTTPS.</li>
+  <li>File paths in error/traceback reports are automatically reduced to file names only before sending (full paths may contain your username, so they are never sent).</li>
+  <li>Your password is never written to disk; it is kept in memory only.</li>
+  <li>The developer's Telegram bot token/chat ID is not hardcoded in the source code; it is only present on the developer's own build machine.</li>
+</ul>
+
+<h2>8. Data Retention and Deletion</h2>
+<ul>
+  <li><strong>Local files</strong> (settings, log): remain on your device until you delete them or uninstall the App. The log file is auto-rotated once it reaches its size cap (older entries are discarded).</li>
+  <li><strong>Messages sent to Telegram</strong> (error reports, feedback, and Pro purchase notifications): retained in the developer's Telegram chat until the developer deletes them. To request deletion of a specific message, use the contact details in section 12.</li>
+</ul>
+
+<h2>9. Your Controls and Rights</h2>
+<ul>
+  <li>Turn off error reporting at any time from the gear menu.</li>
+  <li>Choose not to submit a message from the Feedback panel.</li>
+  <li>A Pro purchase notification is generated only when you start the Pro purchase flow.</li>
+  <li>Delete the <code>%LOCALAPPDATA%\OtomatikKapatici\</code> folder to remove your local settings and log files entirely.</li>
+  <li>Uninstalling the App (via the Store or Control Panel) removes local data files and, if present, the Registry key.</li>
+  <li>To request deletion of an error report or feedback message you sent to the developer, use the contact details in section 12.</li>
+</ul>
+
+<h2>10. Children's Privacy</h2>
+<p>The App is not directed at children and does not knowingly collect data from children under 13. As described above, the App does not collect personal data in general, so this presents no additional risk.</p>
+
+<h2>11. Changes to This Policy</h2>
+<p>This policy may be updated from time to time. The "Last updated" date at the top of the page will be revised when material changes are made. Continuing to use the App after an update constitutes acceptance of the revised policy.</p>
+
+<h2>12. Contact</h2>
+<ul>
+  <li>Email: <a href="mailto:idyllesoft@outlook.com">idyllesoft@outlook.com</a></li>
+  <li>Telegram: <a href="https://t.me/methimi" target="_blank" rel="noopener">@methimi</a></li>
+</ul>
+
+<footer>
+  © 2026 Idylle Soft. Bu belge, Auto Shutdown &amp; Scheduler uygulamasının kaynak kodundaki gerçek veri işleme davranışına dayanılarak hazırlanmıştır; hukuki danışmanlık yerine geçmez.<br>
+  This document was prepared based on the actual data-handling behavior in the Auto Shutdown &amp; Scheduler source code; it does not constitute legal advice.
+</footer>
+
+</div>
+
+
+</body></html>
