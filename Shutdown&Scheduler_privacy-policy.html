@@ -81,7 +81,7 @@
   <div class="meta">
     <strong>Uygulama:</strong> Auto Shutdown &amp; Scheduler &nbsp;·&nbsp;
     <strong>Geliştirici:</strong> Idylle Soft &nbsp;·&nbsp;
-    <strong>Son güncelleme:</strong> 4 Ağustos 2026
+    <strong>Son güncelleme:</strong> 2 Eylül 2026
   </div>
   <nav class="lang">
     <a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr">Türkçe</a>
@@ -100,6 +100,7 @@
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-hata">Hata Raporlama (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-geribildirim">Geri Bildirim (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-satin-alma">Pro Satın Alma Bildirimleri (Telegram üzerinden)</a></li>
+    <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-acilis">Anonim Açılış İstatistikleri (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-ucuncu">Üçüncü Taraflarla Paylaşım</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-guvenlik">Veri Güvenliği</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-saklama">Veri Saklama ve Silme</a></li>
@@ -116,7 +117,7 @@
 
 <div class="card">
   <span class="badge local">Özetle</span>
-  <p style="margin:0">Uygulama bir <strong>hesap</strong>, <strong>giriş</strong> veya <strong>bulut senkronizasyonu</strong> gerektirmez. Reklam göstermez, üçüncü taraf analitik/izleme SDK'sı içermez, verinizi satmaz veya pazarlama amacıyla paylaşmaz. Ayarlarınız ve günlük (log) dosyanız yalnızca kendi bilgisayarınızda tutulur. Yalnızca üç durumda — <em>hata raporlama</em> (varsayılan açık, kapatılabilir), <em>geri bildirim gönderme</em> (yalnızca siz "Gönder"e basarsanız) ve <em>Pro satın alma akışını başlatma</em> — sınırlı teknik bilgi geliştiricinin Telegram sohbetine gönderilir. Aşağıda tam olarak ne gittiği/gitmediği satır satır açıklanmıştır.</p>
+  <p style="margin:0">Uygulama bir <strong>hesap</strong>, <strong>giriş</strong> veya <strong>bulut senkronizasyonu</strong> gerektirmez. Reklam göstermez, üçüncü taraf analitik/izleme SDK'sı içermez, verinizi satmaz veya pazarlama amacıyla paylaşmaz. Ayarlarınız ve günlük (log) dosyanız yalnızca kendi bilgisayarınızda tutulur. Yalnızca dört durumda — <em>hata raporlama</em> (varsayılan açık, kapatılabilir), <em>geri bildirim gönderme</em> (yalnızca siz "Gönder"e basarsanız), <em>Pro satın alma akışını başlatma</em> ve <em>anonim açılış istatistiği</em> — sınırlı teknik bilgi geliştiricinin Telegram sohbetine gönderilir. Aşağıda tam olarak ne gittiği/gitmediği satır satır açıklanmıştır.</p>
 </div>
 
 <h2 id="tr-hesap">2. Hesap ve Kimlik Doğrulama</h2>
@@ -148,13 +149,13 @@
 </div>
 <h3>Gönderilenler</h3>
 <ul>
-  <li>Hangi bileşenin hata verdiği ve tam hata mesajı/traceback (dosya yolları, yalnızca dosya adına indirgenmiş hâlde — tam yol asla gönderilmez)</li>
+  <li>Hangi bileşenin hata verdiği ve hata mesajı/traceback; dosya yolları ve dosya adları gönderilmeden önce otomatik olarak maskelenir</li>
   <li>Uygulama sürümü, işletim sistemi ve sürümü, Python sürümü, işlemci mimarisi/çekirdek sayısı, toplam/kullanılabilir RAM, anlık CPU kullanımı</li>
 </ul>
 <h3>Kesinlikle gönderilmeyenler</h3>
 <ul class="dim">
   <li>Kullanıcı adınız, bilgisayar adınız</li>
-  <li>Dosya yollarınız (tam yol olarak)</li>
+  <li>Dosya yollarınız veya dosya adlarınız</li>
   <li>IP adresiniz (Uygulama tarafından toplanmaz — bkz. madde 6)</li>
   <li>Kişisel dosyalarınız veya izlediğiniz program/dosya adları</li>
 </ul>
@@ -169,11 +170,14 @@
 <h3>Gönderilenler</h3>
 <ul>
   <li>Yazdığınız metin ve seçtiğiniz kategori (Öneri / Hata bildirimi / Diğer)</li>
-  <li>Uygulama sürümü, arayüz dili</li>
-  <li>Hata raporlamadakiyle aynı, kişisel veri içermeyen sistem bilgisi (işletim sistemi, mimari, çekirdek sayısı, RAM, anlık CPU kullanımı)</li>
+  <li>Uygulama sürümü, arayüz dili, sistem dili</li>
+  <li>Kişisel veri içermeyen teknik sistem bilgisi: Windows sürümü ve build numarası, işlemci mimarisi, ekran çözünürlüğü, DPI/ölçeklendirme ve WebView2 Runtime sürümü</li>
 </ul>
 <p class="dim">Kesinlikle gönderilmeyenler madde 4'tekiyle aynıdır: kullanıcı adı, bilgisayar adı, dosya yolları, IP adresi.</p>
 <p><strong>Not:</strong> Geri bildirim metnine kendi isteğinizle kişisel bilgi (ör. e-posta adresinizi) yazarsanız, elbette bu, yazdığınız metnin bir parçası olarak iletilir — Uygulama bunu talep etmez veya zorunlu kılmaz.</p>
+
+<h3>Destek e-postası taslağı</h3>
+<p>Hakkında penceresindeki e-posta bağlantısına tıkladığınızda, varsayılan e-posta istemcinizde aynı teknik bilgileri içeren bir taslak oluşturulur. Uygulama bu taslağı veya bilgileri kendisi göndermez; paylaşım ancak e-postayı sizin göndermenizle gerçekleşir.</p>
 
 <h3 id="tr-satin-alma">5.1. Pro Satın Alma Bildirimleri (Telegram üzerinden)</h3>
 <div class="card">
@@ -193,28 +197,39 @@
 </ul>
 <p>Ödeme işlemi yalnızca Microsoft Store tarafından yürütülür. Uygulama ödeme bilgilerinize erişmez veya bunları saklamaz.</p>
 
+<h3 id="tr-acilis">5.2. Anonim Açılış İstatistikleri (Telegram üzerinden)</h3>
+<div class="card">
+  <span class="badge optional">Uygulama başarıyla açıldığında gönderilir</span>
+  <p style="margin:0">Uygulamanın toplam kullanımını istatistiksel olarak anlayabilmek için, arayüz başarıyla hazır olduğunda geliştiricinin Telegram sohbetine kısa bir açılış olayı gönderilir. Bu olay, kullanıcıları tek tek tanımak veya takip etmek amacıyla kullanılmaz.</p>
+</div>
+<h3>Gönderilenler</h3>
+<ul><li>Uygulamanın açıldığı bilgisi, uygulama sürümü ve sunucunun oluşturduğu zaman damgası</li></ul>
+<h3>Kesinlikle gönderilmeyenler</h3>
+<ul class="dim"><li>Kullanıcı kimliği, kullanıcı adı, bilgisayar adı veya cihaz kimliği</li><li>Dosya yolları, kişisel dosyalar, ayarlar, kullanım/işlem ayrıntıları veya konum bilgisi</li></ul>
+
 <h2 id="tr-ucuncu">6. Üçüncü Taraflarla Paylaşım</h2>
-<p>Madde 4, 5 ve 5.1'de açıklanan veriler, HTTPS ile şifrelenmiş şekilde geliştiricinin Cloudflare Worker hizmetine iletilir. Worker, mesajı geliştiricinin özel Telegram sohbetine ulaştırır; Telegram bot tokenı uygulama paketinde bulunmaz. Üçüncü bir analitik şirketi, reklam ağı ya da veri komisyoncusuyla paylaşım yapılmaz, veri satılmaz.</p>
+<p>Madde 4, 5, 5.1 ve 5.2'de açıklanan veriler, HTTPS ile şifrelenmiş şekilde geliştiricinin Cloudflare Worker hizmetine iletilir. Worker, mesajı geliştiricinin özel Telegram sohbetine ulaştırır; Telegram bot tokenı uygulama paketinde bulunmaz. Üçüncü bir analitik şirketi, reklam ağı ya da veri komisyoncusuyla paylaşım yapılmaz, veri satılmaz.</p>
 <p class="dim">İnternet üzerinden yapılan her bağlantıda olduğu gibi, iletim sırasında Telegram'ın altyapısı standart ağ bilgisi (ör. IP adresiniz) olarak sizi görebilir — bu, Uygulamanın kendisinin topladığı veya sakladığı bir veri değildir, Telegram'ın kendi <a href="https://telegram.org/privacy" target="_blank" rel="noopener">gizlilik politikasına</a> tabidir.</p>
 <p>Uygulama, mailto: veya http(s):// bağlantılarını (ör. geliştirici iletişim/sosyal medya bağlantıları) yalnızca <strong>siz tıkladığınızda</strong> varsayılan tarayıcınızda/posta istemcinizde açar; bu sırada otomatik olarak veri iletilmez.</p>
 
 <h2 id="tr-guvenlik">7. Veri Güvenliği</h2>
 <ul>
   <li>Telegram'a yapılan tüm iletim HTTPS ile şifrelenir.</li>
-  <li>Hata/traceback raporlarındaki dosya yolları, gönderilmeden önce otomatik olarak yalnızca dosya adına indirgenir (tam yol, kullanıcı adınızı içerebileceği için gönderilmez).</li>
+  <li>Hata/traceback raporlarındaki dosya yolları ve dosya adları, gönderilmeden önce otomatik olarak maskelenir.</li>
   <li>Parolanız hiçbir zaman diske yazılmaz, yalnızca bellekte tutulur.</li>
-  <li>Geliştiriciye ait Telegram bot token'ı/sohbet kimliği kaynak koda gömülü değildir; yalnızca geliştiricinin kendi derleme ortamında tutulur.</li>
+  <li>Geliştiriciye ait Telegram bot token'ı/sohbet kimliği uygulama paketine veya kaynak koda gömülü değildir; yalnızca Cloudflare Worker gizli değişkenlerinde tutulur.</li>
 </ul>
 
 <h2 id="tr-saklama">8. Veri Saklama ve Silme</h2>
 <ul>
   <li><strong>Yerel dosyalar</strong> (ayarlar, log): siz silene veya Uygulamayı kaldırana kadar cihazınızda kalır. Log dosyası boyut sınırına ulaştığında otomatik olarak döndürülür (eski kayıtlar silinir).</li>
-  <li><strong>Telegram'a gönderilen mesajlar</strong> (hata raporları, geri bildirimler ve Pro satın alma bildirimleri): geliştiricinin Telegram sohbetinde, geliştirici silene kadar saklanır. Belirli bir mesajın silinmesini istiyorsanız aşağıdaki iletişim bilgilerinden ulaşabilirsiniz.</li>
+  <li><strong>Telegram'a gönderilen mesajlar</strong> (hata raporları, geri bildirimler, Pro satın alma ve anonim açılış istatistikleri): geliştiricinin Telegram sohbetinde, geliştirici silene kadar saklanır. Belirli bir mesajın silinmesini istiyorsanız aşağıdaki iletişim bilgilerinden ulaşabilirsiniz.</li>
 </ul>
 
 <h2 id="tr-haklar">9. Kontrolleriniz ve Haklarınız</h2>
 <ul>
   <li>Hata raporlamayı dişli menüsünden dilediğiniz an kapatabilirsiniz.</li>
+  <li>Anonim açılış istatistikleri kullanıcı veya cihaz kimliği içermez; bu nedenle tekil kullanıcıyı tanımlamak için kullanılamaz.</li>
   <li>Geri Bildirim panelinden mesaj göndermemeyi seçebilirsiniz.</li>
   <li>Pro satın alma bildirimi, yalnızca Pro satın alma akışını başlatmanız sırasında oluşur.</li>
   <li><code>%LOCALAPPDATA%\OtomatikKapatici\</code> klasörünü silerek yerel ayar ve günlük dosyalarınızı tamamen kaldırabilirsiniz.</li>
@@ -242,7 +257,7 @@
 <div class="meta">
   <strong>App:</strong> Auto Shutdown &amp; Scheduler &nbsp;·&nbsp;
   <strong>Developer:</strong> Idylle Soft &nbsp;·&nbsp;
-  <strong>Last updated:</strong> August 4, 2026
+    <strong>Last updated:</strong> September 2, 2026
 </div>
 <nav class="lang" style="margin-top:12px;">
   <a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr">Türkçe</a>
@@ -255,7 +270,7 @@
 
 <div class="card">
   <span class="badge local">In short</span>
-  <p style="margin:0">The App requires no account, sign-in, or cloud sync. It shows no ads, includes no third-party analytics/tracking SDKs, and does not sell or share your data for marketing. Your settings and log file are stored only on your own computer. Only three features — <em>error reporting</em> (on by default, can be turned off), <em>feedback submission</em> (only when you press "Send"), and <em>starting the Pro purchase flow</em> — send limited technical information to the developer's Telegram chat. What exactly is and isn't sent is detailed below.</p>
+  <p style="margin:0">The App requires no account, sign-in, or cloud sync. It shows no ads, includes no third-party analytics/tracking SDKs, and does not sell or share your data for marketing. Your settings and log file are stored only on your own computer. Only four features — <em>error reporting</em> (on by default, can be turned off), <em>feedback submission</em> (only when you press "Send"), <em>starting the Pro purchase flow</em>, and <em>anonymous launch statistics</em> — send limited technical information to the developer's Telegram chat. What exactly is and isn't sent is detailed below.</p>
 </div>
 
 <h2>2. Accounts and Authentication</h2>
@@ -286,13 +301,13 @@
 </div>
 <h3>What is sent</h3>
 <ul>
-  <li>Which component failed, the error message and full traceback (file paths are reduced to file names only — full paths are never sent)</li>
+  <li>Which component failed, the error message and traceback; file paths and file names are automatically masked before sending</li>
   <li>App version, OS and version, Python version, CPU architecture/core count, total/available RAM, instantaneous CPU usage</li>
 </ul>
 <h3>What is never sent</h3>
 <ul class="dim">
   <li>Your username or computer name</li>
-  <li>Full file paths</li>
+  <li>File paths or file names</li>
   <li>Your IP address (not collected by the App itself — see section 6)</li>
   <li>Your personal files, or the names of programs/files you monitor</li>
 </ul>
@@ -307,11 +322,14 @@
 <h3>What is sent</h3>
 <ul>
   <li>The text you write and the category you choose (Suggestion / Bug report / Other)</li>
-  <li>App version, interface language</li>
-  <li>The same non-personal system information as error reporting (OS, architecture, core count, RAM, instantaneous CPU usage)</li>
+  <li>App version, interface language, system language</li>
+  <li>Non-personal technical system information: Windows version and build number, processor architecture, screen resolution, DPI/scaling, and WebView2 Runtime version</li>
 </ul>
 <p class="dim">What is never sent is the same as section 4: username, computer name, file paths, IP address.</p>
 <p><strong>Note:</strong> If you voluntarily include personal information (e.g. your email address) in your feedback text, that is naturally transmitted as part of the message you wrote — the App does not request or require this.</p>
+
+<h3>Support email draft</h3>
+<p>When you select the email link in the About window, a draft containing the same technical information is created in your default email client. The App does not send the draft or this information itself; it is shared only if you choose to send the email.</p>
 
 <h3 id="en-purchase">5.1. Pro Purchase Notifications (via Telegram)</h3>
 <div class="card">
@@ -331,28 +349,39 @@
 </ul>
 <p>Payments are handled exclusively by Microsoft Store. The App does not access or retain payment information.</p>
 
+<h3 id="en-startup">5.2. Anonymous Launch Statistics (via Telegram)</h3>
+<div class="card">
+  <span class="badge optional">Sent when the App opens successfully</span>
+  <p style="margin:0">To understand total App usage statistically, a short launch event is sent to the developer's Telegram chat once the interface is ready. This event is not used to identify or track individual users.</p>
+</div>
+<h3>What is sent</h3>
+<ul><li>That the App was opened, the App version, and a server-generated timestamp</li></ul>
+<h3>What is never sent</h3>
+<ul class="dim"><li>User ID, username, computer name, or device identifier</li><li>File paths, personal files, settings, usage/action details, or location data</li></ul>
+
 <h2>6. Sharing With Third Parties</h2>
-<p>The data described in sections 4, 5, and 5.1 is sent over HTTPS to the developer's Cloudflare Worker service. The Worker relays the message to the developer's private Telegram chat; the Telegram bot token is not included in the App package. No data is shared with third-party analytics companies, ad networks, or data brokers, and no data is sold.</p>
+<p>The data described in sections 4, 5, 5.1, and 5.2 is sent over HTTPS to the developer's Cloudflare Worker service. The Worker relays the message to the developer's private Telegram chat; the Telegram bot token is not included in the App package. No data is shared with third-party analytics companies, ad networks, or data brokers, and no data is sold.</p>
 <p class="dim">As with any internet connection, Telegram's infrastructure will incidentally see standard network information (such as your IP address) while relaying the message — this is not data collected or retained by the App itself, and is subject to <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Telegram's own privacy policy</a>.</p>
 <p>The App opens mailto: or http(s):// links (e.g. developer contact/social links) in your default browser/mail client only when <strong>you click them</strong>; no data is transmitted automatically in doing so.</p>
 
 <h2>7. Data Security</h2>
 <ul>
   <li>All transmission to Telegram is encrypted via HTTPS.</li>
-  <li>File paths in error/traceback reports are automatically reduced to file names only before sending (full paths may contain your username, so they are never sent).</li>
+  <li>File paths and file names in error/traceback reports are automatically masked before sending.</li>
   <li>Your password is never written to disk; it is kept in memory only.</li>
-  <li>The developer's Telegram bot token/chat ID is not hardcoded in the source code; it is only present on the developer's own build machine.</li>
+  <li>The developer's Telegram bot token/chat ID is not embedded in the App package or source code; it is stored only as Cloudflare Worker secrets.</li>
 </ul>
 
 <h2>8. Data Retention and Deletion</h2>
 <ul>
   <li><strong>Local files</strong> (settings, log): remain on your device until you delete them or uninstall the App. The log file is auto-rotated once it reaches its size cap (older entries are discarded).</li>
-  <li><strong>Messages sent to Telegram</strong> (error reports, feedback, and Pro purchase notifications): retained in the developer's Telegram chat until the developer deletes them. To request deletion of a specific message, use the contact details in section 12.</li>
+  <li><strong>Messages sent to Telegram</strong> (error reports, feedback, Pro purchase notifications, and anonymous launch statistics): retained in the developer's Telegram chat until the developer deletes them. To request deletion of a specific message, use the contact details in section 12.</li>
 </ul>
 
 <h2>9. Your Controls and Rights</h2>
 <ul>
   <li>Turn off error reporting at any time from the gear menu.</li>
+  <li>Anonymous launch statistics contain no user or device identifier and cannot be used to identify an individual user.</li>
   <li>Choose not to submit a message from the Feedback panel.</li>
   <li>A Pro purchase notification is generated only when you start the Pro purchase flow.</li>
   <li>Delete the <code>%LOCALAPPDATA%\OtomatikKapatici\</code> folder to remove your local settings and log files entirely.</li>
