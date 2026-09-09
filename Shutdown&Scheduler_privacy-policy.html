@@ -81,7 +81,7 @@
   <div class="meta">
     <strong>Uygulama:</strong> Auto Shutdown &amp; Scheduler &nbsp;·&nbsp;
     <strong>Geliştirici:</strong> Idylle Soft &nbsp;·&nbsp;
-    <strong>Son güncelleme:</strong> 2 Eylül 2026
+    <strong>Son güncelleme:</strong> 9 Eylül 2026
   </div>
   <nav class="lang">
     <a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr">Türkçe</a>
@@ -100,7 +100,7 @@
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-hata">Hata Raporlama (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-geribildirim">Geri Bildirim (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-satin-alma">Pro Satın Alma Bildirimleri (Telegram üzerinden)</a></li>
-    <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-acilis">Anonim Açılış İstatistikleri (Telegram üzerinden)</a></li>
+    <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-acilis">Açılış İstatistikleri ve Takma Ad Kimliği (Telegram üzerinden)</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-ucuncu">Üçüncü Taraflarla Paylaşım</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-guvenlik">Veri Güvenliği</a></li>
     <li><a href="https://idyllesoft.github.io/IdylleSoft-Privacy/Shutdown&Scheduler_privacy-policy.html#tr-saklama">Veri Saklama ve Silme</a></li>
@@ -117,14 +117,14 @@
 
 <div class="card">
   <span class="badge local">Özetle</span>
-  <p style="margin:0">Uygulama bir <strong>hesap</strong>, <strong>giriş</strong> veya <strong>bulut senkronizasyonu</strong> gerektirmez. Reklam göstermez, üçüncü taraf analitik/izleme SDK'sı içermez, verinizi satmaz veya pazarlama amacıyla paylaşmaz. Ayarlarınız ve günlük (log) dosyanız yalnızca kendi bilgisayarınızda tutulur. Yalnızca dört durumda — <em>hata raporlama</em> (varsayılan açık, kapatılabilir), <em>geri bildirim gönderme</em> (yalnızca siz "Gönder"e basarsanız), <em>Pro satın alma akışını başlatma</em> ve <em>anonim açılış istatistiği</em> — sınırlı teknik bilgi geliştiricinin Telegram sohbetine gönderilir. Aşağıda tam olarak ne gittiği/gitmediği satır satır açıklanmıştır.</p>
+  <p style="margin:0">Uygulama bir <strong>hesap</strong>, <strong>giriş</strong> veya <strong>bulut senkronizasyonu</strong> gerektirmez. Reklam göstermez, üçüncü taraf analitik/izleme SDK'sı içermez, verinizi satmaz veya pazarlama amacıyla paylaşmaz. Ayarlarınız ve günlük (log) dosyanız yalnızca kendi bilgisayarınızda tutulur. Hata raporu, geri bildirim, Pro satın alma akışı ve açılış istatistikleri için sınırlı teknik bilgi geliştiricinin Telegram sohbetine gönderilir. Bu olaylara, aynı Windows kullanıcı profilinden gelen olayları ayırt etmek üzere yerelde üretilen kalıcı bir takma ad kimliği eşlik eder; ayrıntılar aşağıdadır.</p>
 </div>
 
 <h2 id="tr-hesap">2. Hesap ve Kimlik Doğrulama</h2>
-<p>Uygulama herhangi bir kullanıcı hesabı, e-posta doğrulaması veya bulut oturumu oluşturmaz. Sizi tanımlayan bir kullanıcı kimliği, cihaz kimliği veya reklam kimliği üretilmez ya da saklanmaz.</p>
+<p>Uygulama herhangi bir kullanıcı hesabı, e-posta doğrulaması veya bulut oturumu oluşturmaz. Reklam kimliği, hesap kimliği veya donanım parmak izi üretmez. Bununla birlikte, aşağıdaki olayları aynı Windows kullanıcı profilinden geldiği ölçüde ilişkilendirebilmek için yerelde rastgele bir <strong>takma ad kimliği</strong> üretir; bu kimlik kullanıcı adı, cihaz adı veya donanım kimliği içermez.</p>
 
 <h2 id="tr-yerel">3. Yalnızca Cihazınızda Kalan Veriler</h2>
-<p>Aşağıdaki veriler yalnızca kendi bilgisayarınızda tutulur; hiçbir koşulda İnternet üzerinden gönderilmez:</p>
+<p>Aşağıdaki veriler yalnızca kendi bilgisayarınızda tutulur; hiçbir koşulda İnternet üzerinden gönderilmez. Takma ad kimliği ise madde 5.2'de açıklandığı üzere sınırlı olaylara eşlik eder.</p>
 <table>
   <tbody><tr><th>Veri</th><td><strong>Ayarlarınız</strong> (işlem türü, eşik değerleri, tema, dil tercihi vb.)</td></tr>
   <tr><th>Konum</th><td><code>%LOCALAPPDATA%\OtomatikKapatici\ayarlar.json</code></td></tr>
@@ -151,6 +151,7 @@
 <ul>
   <li>Hangi bileşenin hata verdiği ve hata mesajı/traceback; dosya yolları ve dosya adları gönderilmeden önce otomatik olarak maskelenir</li>
   <li>Uygulama sürümü, işletim sistemi ve sürümü, Python sürümü, işlemci mimarisi/çekirdek sayısı, toplam/kullanılabilir RAM, anlık CPU kullanımı</li>
+  <li>Yerelde rastgele oluşturulan takma ad kimliği (madde 5.2'de açıklanır)</li>
 </ul>
 <h3>Kesinlikle gönderilmeyenler</h3>
 <ul class="dim">
@@ -172,6 +173,7 @@
   <li>Yazdığınız metin ve seçtiğiniz kategori (Öneri / Hata bildirimi / Diğer)</li>
   <li>Uygulama sürümü, arayüz dili, sistem dili</li>
   <li>Kişisel veri içermeyen teknik sistem bilgisi: Windows sürümü ve build numarası, işlemci mimarisi, ekran çözünürlüğü, DPI/ölçeklendirme ve WebView2 Runtime sürümü</li>
+  <li>Yerelde rastgele oluşturulan takma ad kimliği (madde 5.2'de açıklanır)</li>
 </ul>
 <p class="dim">Kesinlikle gönderilmeyenler madde 4'tekiyle aynıdır: kullanıcı adı, bilgisayar adı, dosya yolları, IP adresi.</p>
 <p><strong>Not:</strong> Geri bildirim metnine kendi isteğinizle kişisel bilgi (ör. e-posta adresinizi) yazarsanız, elbette bu, yazdığınız metnin bir parçası olarak iletilir — Uygulama bunu talep etmez veya zorunlu kılmaz.</p>
@@ -188,6 +190,7 @@
 <ul>
   <li>Satın alma penceresinin başlatıldığı bilgisi ve satın alma akışının sonucu</li>
   <li>Uygulama sürümü, zaman damgası ve varsa Microsoft Store sonuç kodu</li>
+  <li>Yerelde rastgele oluşturulan takma ad kimliği (madde 5.2'de açıklanır)</li>
 </ul>
 <h3>Kesinlikle gönderilmeyenler</h3>
 <ul class="dim">
@@ -197,15 +200,16 @@
 </ul>
 <p>Ödeme işlemi yalnızca Microsoft Store tarafından yürütülür. Uygulama ödeme bilgilerinize erişmez veya bunları saklamaz.</p>
 
-<h3 id="tr-acilis">5.2. Anonim Açılış İstatistikleri (Telegram üzerinden)</h3>
+<h3 id="tr-acilis">5.2. Açılış İstatistikleri ve Takma Ad Kimliği (Telegram üzerinden)</h3>
 <div class="card">
   <span class="badge optional">Uygulama başarıyla açıldığında gönderilir</span>
-  <p style="margin:0">Uygulamanın toplam kullanımını istatistiksel olarak anlayabilmek için, arayüz başarıyla hazır olduğunda geliştiricinin Telegram sohbetine kısa bir açılış olayı gönderilir. Bu olay, kullanıcıları tek tek tanımak veya takip etmek amacıyla kullanılmaz.</p>
+  <p style="margin:0">Uygulamanın toplam kullanımını istatistiksel olarak anlayabilmek ve aynı Windows kullanıcı profilinden gelen olayları ayırt edebilmek için, arayüz başarıyla hazır olduğunda geliştiricinin Telegram sohbetine kısa bir açılış olayı gönderilir. Bu olay, kullanıcıları gerçek dünyada tanımak veya donanım parmak izi çıkarmak amacıyla kullanılmaz.</p>
 </div>
 <h3>Gönderilenler</h3>
-<ul><li>Uygulamanın açıldığı bilgisi, uygulama sürümü ve sunucunun oluşturduğu zaman damgası</li></ul>
+<ul><li>Uygulamanın açıldığı bilgisi, uygulama sürümü, sunucunun oluşturduğu zaman damgası ve yerelde rastgele üretilen <code>SAS-XXXX-XXXX-XXXX-XXXX</code> biçiminde kalıcı takma ad kimliği</li></ul>
+<p>Takma ad kimliği yalnızca rastgele karakterlerden oluşur; ad, e-posta, Microsoft hesabı, kullanıcı adı, bilgisayar adı, IP adresi, donanım kimliği, dosya yolu, konum veya ayar içermez. Windows kullanıcı profilindeki kayıt alanında DPAPI ile korunur. Uygulamanın normal kaldırma işlemi bu kayda dokunmadığından, yeniden kurulumda genellikle aynı kalır. Windows kullanıcı profili veya ilgili kayıt verisi silinirse, sistem sıfırlanırsa ya da DPAPI anahtarları kaybolursa yeni bir değer oluşabilir.</p>
 <h3>Kesinlikle gönderilmeyenler</h3>
-<ul class="dim"><li>Kullanıcı kimliği, kullanıcı adı, bilgisayar adı veya cihaz kimliği</li><li>Dosya yolları, kişisel dosyalar, ayarlar, kullanım/işlem ayrıntıları veya konum bilgisi</li></ul>
+<ul class="dim"><li>Kullanıcı hesabı kimliği, kullanıcı adı, bilgisayar adı, reklam kimliği veya donanım cihaz kimliği</li><li>Dosya yolları, kişisel dosyalar, ayarlar, kullanım/işlem ayrıntıları veya konum bilgisi</li></ul>
 
 <h2 id="tr-ucuncu">6. Üçüncü Taraflarla Paylaşım</h2>
 <p>Madde 4, 5, 5.1 ve 5.2'de açıklanan veriler, HTTPS ile şifrelenmiş şekilde geliştiricinin Cloudflare Worker hizmetine iletilir. Worker, mesajı geliştiricinin özel Telegram sohbetine ulaştırır; Telegram bot tokenı uygulama paketinde bulunmaz. Üçüncü bir analitik şirketi, reklam ağı ya da veri komisyoncusuyla paylaşım yapılmaz, veri satılmaz.</p>
@@ -223,17 +227,18 @@
 <h2 id="tr-saklama">8. Veri Saklama ve Silme</h2>
 <ul>
   <li><strong>Yerel dosyalar</strong> (ayarlar, log): siz silene veya Uygulamayı kaldırana kadar cihazınızda kalır. Log dosyası boyut sınırına ulaştığında otomatik olarak döndürülür (eski kayıtlar silinir).</li>
+  <li><strong>Takma ad kimliği</strong>: Windows kullanıcı profilindeki kayıt alanında korunur. Normal uygulama kaldırma işlemi bunu silmez; ilgili kayıt alanını veya Windows kullanıcı profilini silerseniz kaldırılır.</li>
   <li><strong>Telegram'a gönderilen mesajlar</strong> (hata raporları, geri bildirimler, Pro satın alma ve anonim açılış istatistikleri): geliştiricinin Telegram sohbetinde, geliştirici silene kadar saklanır. Belirli bir mesajın silinmesini istiyorsanız aşağıdaki iletişim bilgilerinden ulaşabilirsiniz.</li>
 </ul>
 
 <h2 id="tr-haklar">9. Kontrolleriniz ve Haklarınız</h2>
 <ul>
   <li>Hata raporlamayı dişli menüsünden dilediğiniz an kapatabilirsiniz.</li>
-  <li>Anonim açılış istatistikleri kullanıcı veya cihaz kimliği içermez; bu nedenle tekil kullanıcıyı tanımlamak için kullanılamaz.</li>
+  <li>Takma ad kimliği gerçek kimliğinizi veya cihazınızı tanımlamaz. Yine de kalıcı bir takma ad olduğundan, belirli bir kimliği artık göndermemek için ilgili kayıt alanını veya Windows kullanıcı profilini kaldırabilirsiniz.</li>
   <li>Geri Bildirim panelinden mesaj göndermemeyi seçebilirsiniz.</li>
   <li>Pro satın alma bildirimi, yalnızca Pro satın alma akışını başlatmanız sırasında oluşur.</li>
   <li><code>%LOCALAPPDATA%\OtomatikKapatici\</code> klasörünü silerek yerel ayar ve günlük dosyalarınızı tamamen kaldırabilirsiniz.</li>
-  <li>Uygulamayı kaldırdığınızda (Store üzerinden veya Denetim Masasından) yerel veri dosyaları ve varsa Kayıt Defteri anahtarı da kaldırılır.</li>
+  <li>Uygulamayı kaldırdığınızda yerel uygulama veri dosyaları kaldırılır. Bağımsız masaüstü yükleyicisinin normal kaldırma işlemi takma ad kimliği kayıt alanını silmez; Store paketi veya Windows kullanıcı profili kaldırılırsa yeni bir kimlik oluşabilir.</li>
   <li>Geliştiriciye gönderdiğiniz bir hata raporu/geri bildirim mesajının silinmesini talep etmek için madde 12'deki iletişim bilgilerini kullanabilirsiniz.</li>
 </ul>
 
@@ -270,11 +275,11 @@
 
 <div class="card">
   <span class="badge local">In short</span>
-  <p style="margin:0">The App requires no account, sign-in, or cloud sync. It shows no ads, includes no third-party analytics/tracking SDKs, and does not sell or share your data for marketing. Your settings and log file are stored only on your own computer. Only four features — <em>error reporting</em> (on by default, can be turned off), <em>feedback submission</em> (only when you press "Send"), <em>starting the Pro purchase flow</em>, and <em>anonymous launch statistics</em> — send limited technical information to the developer's Telegram chat. What exactly is and isn't sent is detailed below.</p>
+  <p style="margin:0">The App requires no account, sign-in, or cloud sync. It shows no ads, includes no third-party analytics/tracking SDKs, and does not sell or share your data for marketing. Your settings and log file are stored only on your own computer. Error reports, feedback, the Pro purchase flow, and launch statistics send limited technical information to the developer's Telegram chat. These events include a persistent pseudonymous identifier generated locally to distinguish events from the same Windows user profile; details are provided below.</p>
 </div>
 
 <h2>2. Accounts and Authentication</h2>
-<p>The App does not create any user account, email verification, or cloud session. No user ID, device ID, or advertising ID is generated or stored.</p>
+<p>The App does not create any user account, email verification, or cloud session. It does not generate an advertising ID, account ID, or hardware fingerprint. However, it generates a random <strong>pseudonymous identifier</strong> locally to correlate the events below to the same Windows user profile; this identifier contains no username, computer name, or hardware identifier.</p>
 
 <h2>3. Data That Stays On Your Device Only</h2>
 <table>
@@ -303,6 +308,7 @@
 <ul>
   <li>Which component failed, the error message and traceback; file paths and file names are automatically masked before sending</li>
   <li>App version, OS and version, Python version, CPU architecture/core count, total/available RAM, instantaneous CPU usage</li>
+  <li>A locally generated random pseudonymous identifier (explained in section 5.2)</li>
 </ul>
 <h3>What is never sent</h3>
 <ul class="dim">
@@ -324,6 +330,7 @@
   <li>The text you write and the category you choose (Suggestion / Bug report / Other)</li>
   <li>App version, interface language, system language</li>
   <li>Non-personal technical system information: Windows version and build number, processor architecture, screen resolution, DPI/scaling, and WebView2 Runtime version</li>
+  <li>A locally generated random pseudonymous identifier (explained in section 5.2)</li>
 </ul>
 <p class="dim">What is never sent is the same as section 4: username, computer name, file paths, IP address.</p>
 <p><strong>Note:</strong> If you voluntarily include personal information (e.g. your email address) in your feedback text, that is naturally transmitted as part of the message you wrote — the App does not request or require this.</p>
@@ -340,6 +347,7 @@
 <ul>
   <li>That the purchase window was started and the outcome of the purchase flow</li>
   <li>App version, timestamp, and the Microsoft Store result code when available</li>
+  <li>A locally generated random pseudonymous identifier (explained in section 5.2)</li>
 </ul>
 <h3>What is never sent</h3>
 <ul class="dim">
@@ -349,15 +357,16 @@
 </ul>
 <p>Payments are handled exclusively by Microsoft Store. The App does not access or retain payment information.</p>
 
-<h3 id="en-startup">5.2. Anonymous Launch Statistics (via Telegram)</h3>
+<h3 id="en-startup">5.2. Launch Statistics and Pseudonymous Identifier (via Telegram)</h3>
 <div class="card">
   <span class="badge optional">Sent when the App opens successfully</span>
-  <p style="margin:0">To understand total App usage statistically, a short launch event is sent to the developer's Telegram chat once the interface is ready. This event is not used to identify or track individual users.</p>
+  <p style="margin:0">To understand aggregate App use and distinguish events from the same Windows user profile, a short launch event is sent to the developer's Telegram chat once the interface is ready. It is not used to identify people in the real world or to create a hardware fingerprint.</p>
 </div>
 <h3>What is sent</h3>
-<ul><li>That the App was opened, the App version, and a server-generated timestamp</li></ul>
+<ul><li>That the App was opened, the App version, a server-generated timestamp, and a persistent locally generated pseudonymous identifier in the form <code>SAS-XXXX-XXXX-XXXX-XXXX</code></li></ul>
+<p>The pseudonymous identifier consists only of random characters; it contains no name, email address, Microsoft account, username, computer name, IP address, hardware identifier, file path, location, or setting. It is protected with DPAPI in the current Windows user profile's Registry area. The normal uninstall flow of the standalone desktop installer does not remove this record, so it will normally remain through reinstallation. A new value may be created if the Windows user profile or the related Registry data is removed, Windows is reset, or DPAPI keys are lost.</p>
 <h3>What is never sent</h3>
-<ul class="dim"><li>User ID, username, computer name, or device identifier</li><li>File paths, personal files, settings, usage/action details, or location data</li></ul>
+<ul class="dim"><li>Account ID, username, computer name, advertising ID, or hardware device identifier</li><li>File paths, personal files, settings, usage/action details, or location data</li></ul>
 
 <h2>6. Sharing With Third Parties</h2>
 <p>The data described in sections 4, 5, 5.1, and 5.2 is sent over HTTPS to the developer's Cloudflare Worker service. The Worker relays the message to the developer's private Telegram chat; the Telegram bot token is not included in the App package. No data is shared with third-party analytics companies, ad networks, or data brokers, and no data is sold.</p>
@@ -375,17 +384,18 @@
 <h2>8. Data Retention and Deletion</h2>
 <ul>
   <li><strong>Local files</strong> (settings, log): remain on your device until you delete them or uninstall the App. The log file is auto-rotated once it reaches its size cap (older entries are discarded).</li>
+  <li><strong>Pseudonymous identifier</strong>: protected in the current Windows user profile's Registry area. The normal uninstall flow of the standalone desktop installer does not remove it; it is removed if the related Registry data or Windows user profile is removed.</li>
   <li><strong>Messages sent to Telegram</strong> (error reports, feedback, Pro purchase notifications, and anonymous launch statistics): retained in the developer's Telegram chat until the developer deletes them. To request deletion of a specific message, use the contact details in section 12.</li>
 </ul>
 
 <h2>9. Your Controls and Rights</h2>
 <ul>
   <li>Turn off error reporting at any time from the gear menu.</li>
-  <li>Anonymous launch statistics contain no user or device identifier and cannot be used to identify an individual user.</li>
+  <li>The pseudonymous identifier does not identify you or your actual device. Because it is persistent, you can stop a particular identifier from being sent by removing the related Registry area or your Windows user profile.</li>
   <li>Choose not to submit a message from the Feedback panel.</li>
   <li>A Pro purchase notification is generated only when you start the Pro purchase flow.</li>
   <li>Delete the <code>%LOCALAPPDATA%\OtomatikKapatici\</code> folder to remove your local settings and log files entirely.</li>
-  <li>Uninstalling the App (via the Store or Control Panel) removes local data files and, if present, the Registry key.</li>
+  <li>Uninstalling the App removes local app data files. The normal uninstall flow of the standalone desktop installer does not remove the pseudonymous identifier Registry area; removing the Store package or Windows user profile may result in a new identifier.</li>
   <li>To request deletion of an error report or feedback message you sent to the developer, use the contact details in section 12.</li>
 </ul>
 
