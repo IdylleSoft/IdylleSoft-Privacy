@@ -123,16 +123,16 @@
       <p class="meta">
         <strong>Application:</strong> Auto Shutdown &amp; Scheduler<br>
         <strong>Developer:</strong> Idylle Soft<br>
-        <strong>Last updated:</strong> October 8, 2026
+        <strong>Last updated:</strong> October 10, 2026
       </p>
       <div class="ozet">
         <strong>In short:</strong> The App does not require an account, display advertising, or
         automatically upload your personal files to the cloud. Automation runs locally on your device. However,
         the App may send limited technical data through a Cloudflare Worker to the developer's
         private Telegram chat and Cloudflare D1 database for launch statistics, certain product interactions,
-        interface-health measurements, feedback you submit, and error reports when reporting remains enabled.
+        feedback you submit, and error reports when reporting remains enabled.
         Feedback may include an optional screenshot that you choose to attach. Disabling error reporting
-        does not disable launch, product-interaction, or interface-health events. Cloudflare derives
+        does not disable launch or product-interaction events. Cloudflare derives
         an approximate country name from the connection's IP address. The IP address itself is not
         included in Telegram messages or the App's Cloudflare D1 record.
       </div>
@@ -208,12 +208,9 @@
         </tr>
         <tr>
           <th>Technical-event queue</th>
-          <td>Undelivered launch, product-interaction, and interface-health events may be saved locally for retry. Event identifiers and delivery status help prevent duplicate notifications.</td>
+          <td>Undelivered launch and product-interaction events may be saved locally for retry. Event identifiers and delivery status help prevent duplicate notifications.</td>
         </tr>
-        <tr>
-          <th>Session health</th>
-          <td>Last-response times and crash traces may be stored temporarily to determine whether the previous session ended normally.</td>
-        </tr>
+        
         <tr>
           <th>Password</th>
           <td>A password set for Stop-action protection is held only in application memory and is forgotten when the App closes.</td>
@@ -259,13 +256,14 @@
       </p>
       <ul>
         <li>App launch and edition type (Free or Pro); a launch event alone does not confirm that the interface opened correctly</li>
-        <li>Interface readiness: time to become ready in milliseconds, JavaScript error count, and interface-loading recovery count</li>
-        <li>Display of the Pro offer or dismissal through the Maybe later or Close button</li>
+        
+        <li>Display of the Pro offer when you choose to explore Pro, or dismissal through its Close button; the offer is not automatically displayed on first launch or when restoring the App from the system tray</li>
         <li>Selection of Update now or Later in an update prompt</li>
         <li>Opening the product website from the About screen</li>
         <li>Opening the rating prompt from the moon image</li>
         <li>Display of the rating prompt and the user's rate/remind-later choice</li>
       </ul>
+      
       <h3>Technical fields that may accompany these events</h3>
       <ul>
         <li>App version and pseudonymous identifier</li>
@@ -281,17 +279,18 @@
       </p>
       <p>
         D1 may store the identifier, first/last-seen times, launch count, version, country, and last
-        event; country-level device statistics; device/version interface-health summaries; and a
-        device-linked timeline of launches, interface readiness, errors, and feedback. Event and
+        event; country-level device statistics; a
+        device-linked timeline of launches, critical errors, and feedback. Event and
         delivery identifiers, timestamps, and delivery status are used for retries and deduplication.
         The developer can review these records in an access-controlled management panel to diagnose
         startup problems, follow repeated errors, and understand aggregate use.
       </p>
       <div class="ozet">
         <strong>Scope of the error-reporting switch:</strong> It controls error/crash reports only.
-        It does not turn off automatic launch, product-interaction, or interface-health events,
-        including the JavaScript error and recovery counts in a readiness measurement. The current
-        App has no separate in-App switch for those events. The local technical-event queue may
+        It does not turn off automatic launch or product-interaction events. Interface-readiness
+        timing, JavaScript error/recovery counts as health measurements, session tracking, and
+        heartbeat telemetry are no longer transmitted. The current App has no separate in-App
+        switch for the remaining automatic events. The local technical-event queue may
         continue retrying them after error reporting is disabled.
       </div>
     </section>
@@ -346,16 +345,19 @@
 
     <section id="en-errors">
       <h2>8. Error and crash reports</h2>
+      <p>
+        Current application versions report only directly evidenced critical failures.
+        Interface-health and session telemetry are discontinued. Successful recovery and missing
+        heartbeat data do not produce error reports. Previously collected health/session records
+        and their dedicated tables have been removed from the active D1 database. Legacy health
+        and session events arriving from older versions are accepted and ignored, without new
+        storage or Telegram notifications. Previously delivered Telegram messages or copies in
+        backups are not automatically erased by deleting the active D1 records.
+      </p>
       <div class="ozet">
         <strong>Default: enabled.</strong> You can disable the option labelled anonymous error reports in Settings. Reports can still be linked by the pseudonymous identifier; they are not guaranteed to be irreversibly anonymous.
       </div>
-      <p>
-        Unexpected Python or interface errors, unhandled JavaScript errors, WebView2 process
-        problems, and diagnostic records indicating that the previous session did not close
-        normally may be reported. Reports may be sent to Telegram as JSON documents. When the
-        network is unavailable, a report may remain queued locally and be retried while the App is
-        open; repeated instances of the same error may be consolidated.
-      </p>
+      <p>Only critical failures with direct technical evidence are reported: startup, automation engine, Windows action, unrecoverable WebView2, or fatal native failures. JSON reports are sent to Telegram and grouped in D1. Offline reports remain in the bounded retry queue.</p>
       <p>
         The Worker also stores error groups, diagnostic samples, occurrence counts, first/last-seen
         times, and device associations in D1 for review in the access-controlled management panel.
@@ -367,7 +369,7 @@
         <li>Error title, sanitized details, and traceback</li>
         <li>App, Python, Windows, and WebView2 versions</li>
         <li>Diagnostic information such as architecture, core count, memory, and current CPU usage</li>
-        <li>Session time, last Python/interface response, and active task type</li>
+        <li>Observed critical failure, technical evidence, build identity and limited diagnostic logs</li>
         <li>Pseudonymous identifier, App/system language, and country name</li>
       </ul>
       <p>
@@ -407,7 +409,7 @@
       <table>
         <tr>
           <th>Cloudflare</th>
-          <td>Receives submitted data through the HTTPS Worker, determines approximate country, and stores device/country statistics, interface-health records, error records, feedback, and delivery metadata in D1. The Worker serves the access-controlled management panel and retrieves attached images from Telegram.</td>
+          <td>Receives submitted data through the HTTPS Worker, determines approximate country, and stores device/country statistics, error records, feedback, and delivery metadata in D1. The Worker serves the access-controlled management panel and retrieves attached images from Telegram.</td>
         </tr>
         <tr>
           <th>Telegram</th>
@@ -440,10 +442,11 @@
         <li><strong>Logs and temporary crash traces:</strong> retained according to size limits, rotation, and next-session cleanup rules.</li>
         <li><strong>Local retry queues:</strong> ordinary error and technical-event entries have a seven-day retry eligibility limit. Expiry is evaluated when the queue is processed, not by a continuously running deletion service. Diagnostic backups of unreadable queue files have no automatic deletion period.</li>
         <li><strong>Pseudonymous identifier:</strong> may survive uninstall or deletion of a single copy. See section 4 for all storage locations.</li>
+        
         <li><strong>D1 device timeline:</strong> entries older than 180 days are removed when new timeline activity is recorded.</li>
-        <li><strong>D1 interface-event deduplication records:</strong> entries older than 30 days are removed during subsequent interface-ready recording. Device/version health summaries are separate and do not inherit this expiry.</li>
         <li><strong>D1 error-notification throttling log:</strong> entries older than seven days are removed during subsequent notification processing. This does not delete the underlying error groups or samples.</li>
-        <li><strong>Other D1 records:</strong> device/country statistics, health summaries, error groups and samples, feedback, and notification-delivery records currently have no fixed automatic deletion period and remain until the developer deletes them.</li>
+        <li><strong>Other D1 records:</strong> device/country statistics, error groups and samples, feedback, and notification-delivery records currently have no fixed automatic deletion period and remain until the developer deletes them.</li>
+        <li><strong>Database exports/backups:</strong> a database export made before deletion may retain earlier records. Such copies currently have no fixed automatic deletion period; deleting a record from the active database does not erase it from an existing export or backup. A deletion request should also identify backup copies for assessment.</li>
         <li><strong>Telegram:</strong> transmitted messages, screenshots, and error documents have no App-managed automatic deletion period and may remain until deleted by the developer.</li>
       </ul>
       <p>
@@ -537,16 +540,16 @@
     <p class="meta">
       <strong>Uygulama:</strong> Auto Shutdown &amp; Scheduler<br>
       <strong>Geliştirici:</strong> Idylle Soft<br>
-      <strong>Son güncelleme:</strong> 8 Ekim 2026
+      <strong>Son güncelleme:</strong> 10 Ekim 2026
     </p>
     <div class="ozet">
       <strong>Kısa özet:</strong> Uygulama hesap açmanızı istemez, reklam göstermez ve kişisel
       dosyalarınızı kendiliğinden buluta yüklemez. Otomasyonlar cihazınızda çalışır. Bununla birlikte uygulama;
-      açılış istatistikleri, belirli ürün etkileşimleri, arayüz sağlık ölçümleri, sizin gönderdiğiniz geri
+      açılış istatistikleri, belirli ürün etkileşimleri, sizin gönderdiğiniz geri
       bildirimler ve açık bırakılmışsa hata raporları için sınırlı teknik verileri Cloudflare Worker
       üzerinden geliştiricinin özel Telegram sohbetine iletebilir ve Cloudflare D1 veritabanında saklayabilir.
       Geri bildirime kendi seçiminizle isteğe bağlı ekran görüntüsü ekleyebilirsiniz. Hata raporlamayı
-      kapatmak açılış, ürün etkileşimi ve arayüz sağlık bildirimlerini kapatmaz. Cloudflare, bağlantının IP
+      kapatmak açılış, ürün etkileşimi bildirimlerini kapatmaz. Cloudflare, bağlantının IP
       adresinden yalnızca yaklaşık ülke adını belirler; IP adresi Telegram mesajına veya uygulamanın
       Cloudflare D1 kaydına eklenmez.
     </div>
@@ -622,12 +625,9 @@
       </tr>
       <tr>
         <th>Teknik olay kuyruğu</th>
-        <td>İletilemeyen açılış, ürün etkileşimi ve arayüz sağlık olayları yeniden denemek için yerelde saklanabilir. Olay kimlikleri ve teslim durumu mükerrer bildirimleri önlemeye yardımcı olur.</td>
+        <td>İletilemeyen açılış, ürün etkileşimi olayları yeniden denemek için yerelde saklanabilir. Olay kimlikleri ve teslim durumu mükerrer bildirimleri önlemeye yardımcı olur.</td>
       </tr>
-      <tr>
-        <th>Oturum sağlığı</th>
-        <td>Önceki oturumun düzgün kapanıp kapanmadığını anlamak için son yanıt zamanları ve çökme izleri geçici olarak tutulabilir.</td>
-      </tr>
+      
       <tr>
         <th>Parola</th>
         <td>Parola koruması için belirlediğiniz parola yalnızca uygulama belleğinde tutulur ve uygulama kapandığında unutulur.</td>
@@ -673,13 +673,14 @@
     </p>
     <ul>
       <li>Uygulama açılışı ve sürüm türü (Free veya Pro); açılış olayı tek başına arayüzün sağlıklı açıldığını doğrulamaz</li>
-      <li>Arayüzün hazır olması: milisaniye cinsinden hazır olma süresi, JavaScript hata sayısı ve arayüz yükleme kurtarma sayısı</li>
-      <li>Pro teklif ekranının görüntülenmesi veya “Daha sonra”/kapatma düğmesiyle kapatılması</li>
+      
+      <li>Pro'yu keşfetmeyi seçtiğinizde teklif ekranının görüntülenmesi veya kapatma düğmesiyle kapatılması; teklif ilk açılışta veya uygulama sistem tepsisinden geri getirildiğinde otomatik gösterilmez</li>
       <li>Güncelleme önerisinde “Şimdi güncelle” veya “Daha sonra” seçiminin yapılması</li>
       <li>Hakkında ekranından ürün web sitesinin açılması</li>
       <li>Ay görselinden değerlendirme penceresinin açılması</li>
       <li>Değerlendirme penceresinin gösterilmesi ve kullanıcının değerlendirme/erteleme seçimi</li>
     </ul>
+    
     <h3>Bu olaylara eşlik edebilen teknik alanlar</h3>
     <ul>
       <li>Uygulama sürümü ve takma ad kimliği</li>
@@ -695,7 +696,7 @@
     </p>
     <p>
       D1'de kimlik, ilk/son görülme zamanı, açılış sayısı, sürüm, ülke ve son olay; ülke bazlı cihaz
-      istatistikleri; cihaz/sürüm bazlı arayüz sağlık özetleri ve açılış, arayüz hazır olma, hata ve
+      istatistikleri; açılış, kritik hata ve
       geri bildirim olaylarından oluşan cihazla ilişkilendirilmiş zaman çizelgesi saklanabilir.
       Olay ve teslim kimlikleri, zamanları ve teslim durumu yeniden deneme ve tekilleştirme için
       kullanılır. Geliştirici, erişim kontrollü yönetim panelinde açılış sorunlarını incelemek,
@@ -703,8 +704,9 @@
     </p>
     <div class="ozet">
       <strong>Hata raporlama anahtarının kapsamı:</strong> Yalnızca hata/çökme raporlarını kontrol eder.
-      Otomatik açılış, ürün etkileşimi ve arayüz sağlık bildirimlerini; sağlık ölçümündeki JavaScript
-      hata ve kurtarma sayılarını kapatmaz. Mevcut uygulamada bu olaylar için ayrı bir kapatma
+      Otomatik açılış ve ürün etkileşimi bildirimlerini kapatmaz. Arayüzün hazır olma süresi,
+      sağlık ölçümü olarak JavaScript hata/kurtarma sayıları, oturum takibi ve periyodik nabız
+      verileri artık iletilmez. Mevcut uygulamada kalan otomatik olaylar için ayrı bir kapatma
       anahtarı yoktur. Yerel teknik olay kuyruğu hata raporlama kapatıldıktan sonra da bu olayları
       yeniden göndermeyi deneyebilir.
     </div>
@@ -759,15 +761,19 @@
 
   <section id="hata">
     <h2>8. Hata ve çökme raporları</h2>
+    <p>
+      Güncel uygulama sürümleri yalnızca doğrudan teknik kanıtı bulunan kritik hataları raporlar.
+      Arayüz sağlığı ve oturum telemetrisi sonlandırılmıştır. Başarılı kurtarma veya nabız
+      verisinin gelmemesi hata raporu oluşturmaz. Daha önce toplanan sağlık/oturum kayıtları ve
+      bunlara ait tablolar aktif D1 veritabanından kaldırılmıştır. Eski sürümlerden gelen sağlık
+      ve oturum olayları yeni kayıt veya Telegram bildirimi üretilmeden kabul edilip yok sayılır.
+      Aktif D1 kayıtlarının silinmesi, daha önce gönderilmiş Telegram mesajlarını veya
+      yedeklerdeki kopyaları otomatik olarak silmez.
+    </p>
     <div class="ozet">
       <strong>Varsayılan durum: açık.</strong> Ayarlar bölümündeki anonim hata raporu adlı seçenekten kapatabilirsiniz. Raporlar takma ad kimliğiyle ilişkilendirilebilir; geri döndürülemez biçimde anonim oldukları garanti edilmez.
     </div>
-    <p>
-      Beklenmedik Python/arayüz hataları, yakalanmayan JavaScript hataları, WebView2 süreç sorunları
-      ve önceki oturumun düzgün kapanmadığını gösteren teşhis kayıtları raporlanabilir. Raporlar JSON
-      belgesi olarak Telegram'a gönderilebilir. Ağ yoksa rapor yerelde bekletilip uygulama açıkken
-      yeniden denenebilir; tekrar eden aynı hata tek kayıtta birleştirilebilir.
-    </p>
+    <p>Yalnızca teknik kanıtı bulunan kritik hatalar (açılış, motor, Windows işlem komutu, kurtarılamayan WebView2 veya ölümcül native hata) raporlanır. Raporlar JSON belgesi olarak Telegram'a gönderilir ve D1'de gruplanır. Ağ yoksa sınırlı yerel kuyrukta saklanıp yeniden denenir.</p>
     <p>
       Worker ayrıca hata gruplarını, teşhis örneklerini, tekrar sayılarını, ilk/son görülme
       zamanlarını ve cihaz ilişkilerini erişim kontrollü yönetim panelinde incelemek için D1'de
@@ -779,7 +785,7 @@
       <li>Hata başlığı, temizlenmiş hata ayrıntısı ve traceback</li>
       <li>Uygulama, Python, Windows ve WebView2 sürümleri</li>
       <li>Mimari, çekirdek sayısı, bellek ve anlık CPU gibi teşhis bilgileri</li>
-      <li>Oturum zamanı, son Python/arayüz yanıtı ve aktif görev türü</li>
+      <li>Gözlenen kritik hata, teknik kanıt, derleme kimliği ve sınırlı tanılama günlükleri</li>
       <li>Takma ad kimliği, uygulama/sistem dili ve ülke adı</li>
     </ul>
     <p>
@@ -818,7 +824,7 @@
     <table>
       <tr>
         <th>Cloudflare</th>
-        <td>Verileri HTTPS Worker üzerinden alır, yaklaşık ülkeyi belirler; cihaz/ülke istatistiklerini, arayüz sağlık kayıtlarını, hataları, geri bildirimleri ve teslim bilgilerini D1'de saklar. Worker erişim kontrollü yönetim panelini sunar ve eklenen görselleri Telegram'dan alır.</td>
+        <td>Verileri HTTPS Worker üzerinden alır, yaklaşık ülkeyi belirler; cihaz/ülke istatistiklerini, hataları, geri bildirimleri ve teslim bilgilerini D1'de saklar. Worker erişim kontrollü yönetim panelini sunar ve eklenen görselleri Telegram'dan alır.</td>
       </tr>
       <tr>
         <th>Telegram</th>
@@ -850,10 +856,12 @@
       <li><strong>Log ve geçici çökme izleri:</strong> Boyut sınırı, döndürme ve yeni oturumdaki temizleme kurallarına göre saklanır.</li>
       <li><strong>Yerel yeniden deneme kuyrukları:</strong> Normal hata ve teknik olay kayıtlarının yeniden gönderime uygunluğu yedi günle sınırlıdır. Süre aşımı kuyruk işlenirken değerlendirilir; sürekli çalışan bir silme servisi yoktur. Okunamayan kuyruk dosyalarının teşhis yedekleri için otomatik silme süresi yoktur.</li>
       <li><strong>Takma ad kimliği:</strong> Uygulama kaldırıldıktan veya tek kopyası silindikten sonra kalabilir. Tüm konumlar için 4. bölüme bakın.</li>
+      
       <li><strong>D1 cihaz zaman çizelgesi:</strong> Yeni çizelge olayı kaydedilirken 180 günden eski kayıtlar silinir.</li>
-      <li><strong>D1 arayüz olayı tekilleştirme kayıtları:</strong> Sonraki arayüz hazır olma kaydı sırasında 30 günden eski kayıtlar silinir. Cihaz/sürüm sağlık özetleri ayrıdır ve bu süreyle silinmez.</li>
+      
       <li><strong>D1 hata bildirimi sıklık günlüğü:</strong> Sonraki bildirim işlenirken yedi günden eski kayıtlar temizlenir. Bu işlem asıl hata gruplarını veya örneklerini silmez.</li>
-      <li><strong>Diğer D1 kayıtları:</strong> Cihaz/ülke istatistikleri, sağlık özetleri, hata grupları ve örnekleri, geri bildirimler ve bildirim teslim kayıtları için şu anda sabit otomatik silme süresi yoktur; geliştirici silene kadar tutulurlar.</li>
+      <li><strong>Diğer D1 kayıtları:</strong> Cihaz/ülke istatistikleri, hata grupları ve örnekleri, geri bildirimler ve bildirim teslim kayıtları için şu anda sabit otomatik silme süresi yoktur; geliştirici silene kadar tutulurlar.</li>
+      <li><strong>Veritabanı dışa aktarımları/yedekleri:</strong> Silme işleminden önce alınmış bir dışa aktarım eski kayıtları içerebilir. Bu kopyalar için şu anda sabit otomatik silme süresi yoktur; aktif veritabanından bir kaydı silmek mevcut dışa aktarım veya yedekteki kopyasını silmez. Silme talebinde yedek kopyaların da değerlendirilmesi belirtilmelidir.</li>
       <li><strong>Telegram:</strong> İletilen mesajlar, ekran görüntüleri ve hata belgeleri için uygulamanın yönettiği otomatik silme süresi yoktur; geliştirici silene kadar kalabilirler.</li>
     </ul>
     <p>
