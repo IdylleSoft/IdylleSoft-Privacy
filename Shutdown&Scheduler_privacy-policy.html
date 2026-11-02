@@ -123,7 +123,7 @@
       <p class="meta">
         <strong>Application:</strong> Auto Shutdown &amp; Scheduler<br>
         <strong>Developer:</strong> Idylle Soft<br>
-        <strong>Last updated:</strong> October 10, 2026
+        <strong>Last updated:</strong> November 2, 2026
       </p>
       <div class="ozet">
         <strong>In short:</strong> The App does not require an account, display advertising, or
@@ -324,6 +324,28 @@
         message, it will be transmitted as part of that message. The App does not require you to
         provide such information.
       </p>
+      <h3>Approximate active usage</h3>
+      <p>Versions with active-usage statistics send the existing pseudonymous device identifier
+        approximately every three minutes while the App is running, including in the system tray.
+        The server overwrites that identifier's latest contact time and counts identifiers seen in
+        the last seven minutes. It also stores the highest observed concurrent count for each
+        Turkey calendar day and a separate all-time aggregate peak. This is an approximate device activity count, not proof that a person
+        is using the interface. No session history, window contents or per-heartbeat history is
+        recorded; signals are not queued or backfilled after an internet outage.</p>
+      <h3>In-App support conversations</h3>
+      <p>Versions with the support inbox let you read developer replies and send follow-up messages.
+        Messages, selected category, technical context, optional screenshots, conversation status,
+        timestamps and read receipts are stored in Cloudflare D1. A Telegram notification containing
+        the message and basic app/device context is sent to the developer. Screenshots in these
+        conversations are stored in D1 and displayed through authenticated endpoints; they are not
+        publicly accessible. The older one-way feedback mechanism described below remains compatible.</p>
+      <p>A randomly generated secret access key is saved in your Windows user profile. It is sent over
+        HTTPS in an authorization header; only its cryptographic hash is stored in D1. Your pseudonymous
+        device identifier alone does not grant access to conversations. Losing this local key can make
+          earlier conversations inaccessible. Abuse-prevention counters use a cryptographic hash derived
+          from the source IP, not the raw IP address. The App checks for replies when opened and approximately
+        every five minutes while running after support access has been established; no desktop notification
+        is required. Capturing an attachment does not upload it until you send the message.</p>
       <h3>Optional screenshot</h3>
       <p>
         A screenshot is captured only when you select the screenshot option. The capture targets
@@ -335,7 +357,7 @@
       <p>
         Screenshots are not automatically masked. Visible text, file/program names, or personal
         information can be included. Review the image and do not submit passwords or other
-        sensitive information. Feedback and attachments pass through the Cloudflare Worker to
+        sensitive information. For legacy one-way feedback, feedback and attachments pass through the Cloudflare Worker to
         the developer's private Telegram chat. D1 stores feedback text, category, technical context,
         identifier, version, languages, country, submission time, and attachment metadata. The image
         itself is stored in Telegram, not as an image in D1; its Telegram file identifier lets the
@@ -445,7 +467,8 @@
         
         <li><strong>D1 device timeline:</strong> entries older than 180 days are removed when new timeline activity is recorded.</li>
         <li><strong>D1 error-notification throttling log:</strong> entries older than seven days are removed during subsequent notification processing. This does not delete the underlying error groups or samples.</li>
-        <li><strong>Other D1 records:</strong> device/country statistics, error groups and samples, feedback, and notification-delivery records currently have no fixed automatic deletion period and remain until the developer deletes them.</li>
+        <li><strong>Active usage:</strong> latest-contact rows older than 24 hours and aggregate daily peaks older than 90 days are removed during later presence processing or active-usage panel visits; cleanup is not an exact-time guarantee. The separate all-time aggregate peak and its timestamp have no fixed automatic deletion period.</li>
+        <li><strong>Other D1 records:</strong> device/country statistics, error groups and samples, feedback, support conversations and attachments, abuse-prevention counters, and notification-delivery records currently have no fixed automatic deletion period and remain until the developer deletes them.</li>
         <li><strong>Database exports/backups:</strong> a database export made before deletion may retain earlier records. Such copies currently have no fixed automatic deletion period; deleting a record from the active database does not erase it from an existing export or backup. A deletion request should also identify backup copies for assessment.</li>
         <li><strong>Telegram:</strong> transmitted messages, screenshots, and error documents have no App-managed automatic deletion period and may remain until deleted by the developer.</li>
       </ul>
@@ -540,7 +563,7 @@
     <p class="meta">
       <strong>Uygulama:</strong> Auto Shutdown &amp; Scheduler<br>
       <strong>Geliştirici:</strong> Idylle Soft<br>
-      <strong>Son güncelleme:</strong> 10 Ekim 2026
+      <strong>Son güncelleme:</strong> 2 Kasım 2026
     </p>
     <div class="ozet">
       <strong>Kısa özet:</strong> Uygulama hesap açmanızı istemez, reklam göstermez ve kişisel
@@ -740,6 +763,27 @@
       Mesajınıza kendi isteğinizle ad, e-posta veya başka kişisel bilgiler yazarsanız bunlar mesajın
       parçası olarak iletilir. Uygulama sizden bu bilgileri yazmanızı istemez.
     </p>
+    <h3>Yaklaşık aktif kullanım</h3>
+    <p>Aktif kullanım istatistiğini içeren sürümler, uygulama çalışırken tepside olsa da mevcut
+      takma ad cihaz kimliğini yaklaşık üç dakikada bir gönderir. Sunucu bu kimliğin son bağlantı
+      zamanını günceller ve son yedi dakikada görülen kimlikleri sayar. Türkiye takvim günü için
+      ölçülen en yüksek eşzamanlı sayı ve ayrıca tüm zamanların toplu rekoru saklanır. Bu, yaklaşık cihaz etkinliğidir; bir kişinin
+      arayüzü kullandığını kanıtlamaz. Oturum geçmişi, pencere içeriği veya her sinyalin ayrı
+      geçmişi tutulmaz. İnternet kesintisindeki sinyaller biriktirilip sonradan gönderilmez.</p>
+    <h3>Uygulama içi destek konuşmaları</h3>
+    <p>Destek gelen kutusunu içeren sürümlerde geliştiricinin yanıtlarını okuyabilir ve konuşmaya
+      devam edebilirsiniz. Mesajlar, kategori, teknik bilgiler, isteğe bağlı ekran görüntüleri,
+      konuşma durumu, zamanlar ve okunma bilgisi Cloudflare D1'de saklanır. Mesaj ve temel
+      uygulama/cihaz bilgilerini içeren Telegram bildirimi geliştiriciye iletilir. Bu konuşmalardaki
+      görüntüler D1'de tutulur ve kimlik doğrulamalı uç noktalar üzerinden gösterilir; herkese açık
+      değildir. Aşağıda açıklanan eski tek yönlü geri bildirim sistemiyle uyumluluk korunur.</p>
+    <p>Rastgele üretilen gizli erişim anahtarı Windows kullanıcı profilinizde saklanır. Anahtar HTTPS
+      üzerinden yetkilendirme başlığında iletilir; D1'de yalnızca kriptografik özeti tutulur.
+      Takma ad cihaz kimliğiniz tek başına konuşmalara erişim sağlamaz. Yerel anahtarı kaybetmeniz
+        eski konuşmalara erişimi engelleyebilir. Kötüye kullanımı önleme sayaçları kaynak IP'nin
+        kriptografik özetini kullanır; ham IP adresini saklamaz. Destek erişimi oluşturulduktan sonra uygulama
+      açılışta ve çalışırken yaklaşık beş dakikada bir yanıtları kontrol eder; masaüstü bildirimi
+      gerekli değildir. Ekran görüntüsü almak, mesajı göndermeden görüntüyü yüklemez.</p>
     <h3>İsteğe bağlı ekran görüntüsü</h3>
     <p>
       Ekran görüntüsü yalnızca ilgili seçeneği kullandığınızda alınır. Yakalama tüm masaüstünü değil,
@@ -751,7 +795,7 @@
     <p>
       Ekran görüntüleri otomatik olarak maskelenmez. Görünen metinler, dosya/program adları veya
       kişisel bilgiler görüntüye dahil olabilir. Görseli kontrol edin; parola veya başka hassas
-      bilgiler göndermeyin. Geri bildirim ve ekler Cloudflare Worker üzerinden geliştiricinin özel
+      bilgiler göndermeyin. Eski tek yönlü geri bildirimde mesaj ve ekler Cloudflare Worker üzerinden geliştiricinin özel
       Telegram sohbetine iletilir. D1'de geri bildirim metni, kategori, teknik bilgiler, kimlik,
       sürüm, diller, ülke, gönderim zamanı ve ek bilgileri saklanır. Görselin kendisi D1'de resim
       olarak değil Telegram'da tutulur; Telegram dosya kimliği, erişim kontrollü yönetim panelinin
@@ -860,7 +904,8 @@
       <li><strong>D1 cihaz zaman çizelgesi:</strong> Yeni çizelge olayı kaydedilirken 180 günden eski kayıtlar silinir.</li>
       
       <li><strong>D1 hata bildirimi sıklık günlüğü:</strong> Sonraki bildirim işlenirken yedi günden eski kayıtlar temizlenir. Bu işlem asıl hata gruplarını veya örneklerini silmez.</li>
-      <li><strong>Diğer D1 kayıtları:</strong> Cihaz/ülke istatistikleri, hata grupları ve örnekleri, geri bildirimler ve bildirim teslim kayıtları için şu anda sabit otomatik silme süresi yoktur; geliştirici silene kadar tutulurlar.</li>
+      <li><strong>Aktif kullanım:</strong> 24 saatten eski son bağlantı kayıtları ve 90 günden eski günlük zirveler sonraki etkinlik sinyali işlenirken veya canlı kullanım paneli açıldığında temizlenir; tam o anda silinme garantisi yoktur. Ayrı tutulan tüm zamanların toplu rekoru ve zamanı için sabit otomatik silme süresi yoktur.</li>
+      <li><strong>Diğer D1 kayıtları:</strong> Cihaz/ülke istatistikleri, hata grupları ve örnekleri, geri bildirimler, destek konuşmaları ve ekleri, kötüye kullanımı önleme sayaçları ve bildirim teslim kayıtları için şu anda sabit otomatik silme süresi yoktur; geliştirici silene kadar tutulurlar.</li>
       <li><strong>Veritabanı dışa aktarımları/yedekleri:</strong> Silme işleminden önce alınmış bir dışa aktarım eski kayıtları içerebilir. Bu kopyalar için şu anda sabit otomatik silme süresi yoktur; aktif veritabanından bir kaydı silmek mevcut dışa aktarım veya yedekteki kopyasını silmez. Silme talebinde yedek kopyaların da değerlendirilmesi belirtilmelidir.</li>
       <li><strong>Telegram:</strong> İletilen mesajlar, ekran görüntüleri ve hata belgeleri için uygulamanın yönettiği otomatik silme süresi yoktur; geliştirici silene kadar kalabilirler.</li>
     </ul>
